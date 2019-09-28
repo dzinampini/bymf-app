@@ -1,0 +1,7 @@
+{
+  "name": "bymf",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar style="height:75px;">
+    <button ion-button menuToggle left>
+      <ion-icon name="menu">&nbsp;Baptist Young Men's Fellowship</ion-icon>
+    </button>
+    <button ion-button menuToggle right>
+      <img src="assets/imgs/logo.jpg" width="75px" height="75px" style="display:inline-block" />
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<!-- <ion-content padding> -->
+  <ion-content padding class="card-background-page" >
+    <!-- <ion-card> -->
+      <div class="random-verse" *ngFor="let v of verses">
+        <div class="verse-title">
+          {{v.verse}}
+        </div>
+        <div class="verse-text">
+          {{v.english}}<br><br>
+          {{v.ndebele}}<br><br>
+          {{v.shona}}<br><br>
+        </div>
+      </div>
+      
+  </ion-content>
+<!-- </ion-content> -->
+  

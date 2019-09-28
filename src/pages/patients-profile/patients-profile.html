@@ -1,0 +1,96 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>MoHCC Funding Application ({{this.global.role}}s section) </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content *ngFor="let p of ps" padding>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-12 style="margin-left: auto;margin-right: auto;display: block;text-align:center;">
+            <h1>Basic Details</h1>
+              <ion-list>
+                <ion-item>
+                  <ion-label>First Name</ion-label>
+                  <ion-input value="{{p.first_name}}" readonly="true"></ion-input>
+                </ion-item>
+  
+                <ion-item>
+                  <ion-label>Surname</ion-label>
+                  <ion-input value="{{p.surname}}" readonly="true"></ion-input>
+                </ion-item>
+  
+                <ion-item>
+                  <ion-label>National ID</ion-label>
+                  <ion-input value="{{p.nat_id}}" readonly="true"></ion-input>
+                </ion-item>
+  
+                <ion-item>
+                  <ion-label>Phone</ion-label>
+                  <ion-input value="{{p.phone}}" readonly="true"></ion-input>
+                </ion-item>
+        
+              </ion-list>
+  
+              <!-- <ion-item>
+                <div class="errors">
+                    <p *ngIf="profileData.controls['first_name'].errors" class="danger">First name is required and must be above 2 characters and less than 15 characters</p>
+                    <p *ngIf="profileData.controls['surname'].errors" class="danger">Surname is required and must be above 2 characters and less than 15 characters</p>
+                    <p *ngIf="profileData.controls['nat_id'].errors" class="danger">A national ID is required and must be valid. </p>
+                    <p *ngIf="profileData.controls['phone'].errors" class="danger">Enter a valid phone number </p>
+                   </div>
+            </ion-item>
+           -->
+              <!-- <div padding>
+                <button ion-button color="secondary" [disabled]="!profileData.valid" block>Update Profile</button>
+              </div> -->
+        </ion-col>
+      </ion-row>
+  
+      <br><br>
+      <ion-row>
+        <ion-col col-12 style="margin-left: auto;margin-right: auto;display: block;text-align:center;">
+            <h1>Update Password</h1>
+            <form (submit)="updatePassword()" [formGroup]="passwordData">
+              <ion-list>     
+                  <!-- <ion-item>
+                      <ion-label>Old Password</ion-label>
+                      <ion-input [(ngModel)]="passwords.old" formControlName="old" type="password"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Old Password 2</ion-label>
+                        <ion-input [(ngModel)]="passwords.old2" formControlName="old2" type="password"></ion-input>
+                      </ion-item> -->
+                    <ion-item>
+                        <ion-label>New Password</ion-label>
+                        <ion-input [(ngModel)]="passwords.new1" formControlName="new1" type="password"></ion-input>
+                      </ion-item>
+  
+                <ion-item>
+                  <ion-label>Confirm Password</ion-label>
+                  <ion-input [(ngModel)]="passwords.new2" formControlName="new2" type="password"></ion-input>
+                </ion-item>
+              </ion-list>
+  
+              <ion-item>
+                <div class="errors">
+                  <!-- <p *ngIf="passwordData.controls['old'].errors" class="danger">Enter correct old password</p> -->
+                  <p *ngIf="passwordData.controls['new1'].errors" class="danger">The new password must be between 8 nd 12 characters</p>
+                  <!-- <p *ngIf="passwordData.controls['new2'].errors" class="danger">Your new passwords do not match</p> -->
+                  <p *ngIf="passwordData.hasError('notSame')" class="danger">Your new passwords do not match</p>
+               
+                </div>
+            </ion-item>
+          
+              <div padding>
+                <button ion-button color="secondary" [disabled]="!passwordData.valid" block>Update Profile</button>
+              </div>
+            </form>
+        </ion-col>
+      </ion-row>
+      </ion-grid>
+  </ion-content>
+  

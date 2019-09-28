@@ -1,0 +1,60 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>MoHCC Funding Application ({{this.global.role}}s section) </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-12 style="margin-left: auto;margin-right: auto;display: block;text-align:center;">
+            <h1>My Fees Donations</h1>
+            <div class="row header">
+              <div class="col">Patient</div>
+              <div class="col">Amount</div>
+              <div class="col">Received</div>
+              <div class="col"></div>
+            </div>
+
+            <div class="row" *ngFor="let p of dfs">
+              <div class="col">{{p.patient_name}}</div>
+              <div class="col">ZWL${{p.amount}}</div>
+              <div class="col">
+                  <div *ngIf="p.received == 1; else elseBlock">Yes</div>
+                  <ng-template #elseBlock>Not Yet</ng-template>
+              </div>
+              <div class="col">
+                <div *ngIf="p.campaign == 1; else elseBlock">Via Campaign</div>
+                <ng-template #elseBlock></ng-template>
+            </div>
+            </div>
+        </ion-col>
+      </ion-row>
+      <br><br><br>
+      <ion-row>
+        <ion-col col-12 style="margin-left: auto;margin-right: auto;display: block;text-align:center;">
+              <h1>My Organ Donations</h1>
+              <div class="row header">
+                  <div class="col">Patient</div>
+                  <div class="col">Note</div>
+                  <div class="col">Received</div>
+                </div>
+
+                <div class="row" *ngFor="let p of dos">
+                  <div class="col">{{p.patient_name}}</div>
+                  <div class="col">{{p.note}}</div>
+                  <div class="col">
+                      <div *ngIf="p.received == 1; else elseBlock">Yes</div>
+                      <ng-template #elseBlock>Not Yet</ng-template>
+                  </div>
+                </div>
+
+                 
+          </ion-col>
+      </ion-row>
+      </ion-grid>
+  </ion-content>
+  
