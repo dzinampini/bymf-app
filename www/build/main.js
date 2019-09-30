@@ -1,6 +1,6 @@
-webpackJsonp([21],{
+webpackJsonp([6],{
 
-/***/ 103:
+/***/ 102:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34,9 +34,9 @@ var BymfContactPage = /** @class */ (function () {
     };
     BymfContactPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-bymf-contact',template:/*ion-inline-start:"C:\Pastel18\Install\bymf\src\pages\bymf-contact\bymf-contact.html"*/'<ion-header>\n    <ion-navbar style="height:75px;">\n      <button ion-button menuToggle left>\n        <ion-icon name="menu">&nbsp;Contact BYMF</ion-icon>\n      </button>\n      <button ion-button menuToggle right>\n        <img src="assets/imgs/logo.jpg" width="75px" height="75px" style="display:inline-block" />\n      </button>\n    </ion-navbar>\n  </ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"C:\Pastel18\Install\bymf\src\pages\bymf-contact\bymf-contact.html"*/,
+            selector: 'page-bymf-contact',template:/*ion-inline-start:"C:\Pastel18\Install\bymf\src\pages\bymf-contact\bymf-contact.html"*/'<ion-header>\n    <ion-navbar style="height:75px;">\n      <button ion-button menuToggle left>\n        <ion-icon name="menu">&nbsp;Contact BYMF</ion-icon>\n      </button>\n      <button ion-button menuToggle right>\n        <img src="assets/imgs/logo.jpg" width="75px" height="75px" style="display:inline-block" />\n      </button>\n    </ion-navbar>\n  </ion-header>\n\n\n<ion-content padding>\n  <br><br><br>\n  Thank you for using the BYMF application. If you have ny suggestions or would like to see new features or items added send an email to <a href="">info@bymf.org.zw</a>. \n  Alternatively contact our secretary Cletous Mubaiwa on +263 775 985 609\n</ion-content>\n'/*ion-inline-end:"C:\Pastel18\Install\bymf\src\pages\bymf-contact\bymf-contact.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
     ], BymfContactPage);
     return BymfContactPage;
 }());
@@ -45,13 +45,15 @@ var BymfContactPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 104:
+/***/ 103:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BymfEventsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_global_global__ = __webpack_require__(47);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -63,25 +65,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
 /**
- * Generated class for the BymfEventsPage page.
+ * Generated class for the BymfEventsPage page
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
- */
+ **/
 var BymfEventsPage = /** @class */ (function () {
-    function BymfEventsPage(navCtrl, navParams) {
+    function BymfEventsPage(global, navCtrl, navParams, http) {
+        this.global = global;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.http = http;
+        this.events = [];
     }
     BymfEventsPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad BymfEventsPage');
+        this.maevent();
+    };
+    BymfEventsPage.prototype.maevent = function () {
+        var _this = this;
+        this.http.get(this.global.serverAddress + "events.php")
+            .subscribe(function (data) {
+            console.log(data["_body"]);
+            _this.events = JSON.parse(data["_body"]);
+        }, function (error) {
+            console.log("failed");
+        });
     };
     BymfEventsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-bymf-events',template:/*ion-inline-start:"C:\Pastel18\Install\bymf\src\pages\bymf-events\bymf-events.html"*/'<ion-header>\n    <ion-navbar style="height:75px;">\n      <button ion-button menuToggle left>\n        <ion-icon name="menu">&nbsp;BYMF Events</ion-icon>\n      </button>\n      <button ion-button menuToggle right>\n        <img src="assets/imgs/logo.jpg" width="75px" height="75px" style="display:inline-block" />\n      </button>\n    </ion-navbar>\n  </ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"C:\Pastel18\Install\bymf\src\pages\bymf-events\bymf-events.html"*/,
+            selector: 'page-bymf-events',template:/*ion-inline-start:"C:\Pastel18\Install\bymf\src\pages\bymf-events\bymf-events.html"*/'<ion-header>\n    <ion-navbar style="height:75px;">\n      <button ion-button menuToggle left>\n        <ion-icon name="menu">&nbsp;BYMF Events</ion-icon>\n      </button>\n      <button ion-button menuToggle right>\n        <img src="assets/imgs/logo.jpg" width="75px" height="75px" style="display:inline-block" />\n      </button>\n    </ion-navbar>\n  </ion-header>\n\n\n  <ion-content>\n    <br><br><br>\n\n    <div *ngIf="this.events.length == 0; else elseBlock">There are no upcoming events. You may need to connect to the internet to view recently added events. </div>\n    <ng-template #elseBlock>\n        <ion-list>\n            <button ion-item *ngFor="let i of events">\n              <!-- <ion-icon name="" item-left>{{i.nothing}}</ion-icon> -->\n                <h2>{{i.event}}</h2>\n                <br>\n                <ion-icon name="calendar">\n                  &nbsp;{{i.dates}}\n                </ion-icon>\n                <br>\n                <ion-icon name="home">&nbsp;{{i.venue}}</ion-icon>\n                <div class="item-note" item-right> \n                </div>\n            </button>\n          </ion-list>\n    </ng-template>\n  </ion-content>\n'/*ion-inline-end:"C:\Pastel18\Install\bymf\src\pages\bymf-events\bymf-events.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__providers_global_global__["a" /* GlobalProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */]])
     ], BymfEventsPage);
     return BymfEventsPage;
 }());
@@ -90,13 +111,14 @@ var BymfEventsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 105:
+/***/ 104:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BymfLocatorPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(41);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -106,6 +128,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 /**
@@ -115,18 +138,77 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var BymfLocatorPage = /** @class */ (function () {
-    function BymfLocatorPage(navCtrl, navParams) {
+    function BymfLocatorPage(navCtrl, navParams, alertCtrl, http, toastCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.alertCtrl = alertCtrl;
+        this.http = http;
+        this.toastCtrl = toastCtrl;
     }
     BymfLocatorPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad BymfLocatorPage');
     };
+    //////////////// Bulawayo churches //////////////////////////////////////////////
+    BymfLocatorPage.prototype.bethel = function () {
+        var alert = this.alertCtrl.create({
+            title: "Bethel Baptist Church",
+            subTitle: "Contact Kedious 0775560151",
+            buttons: ['OK']
+        });
+        alert.present();
+    };
+    ////////////////// Harare Churches /////////////////////////////////////////////
+    BymfLocatorPage.prototype.calvary = function () {
+        var alert = this.alertCtrl.create({
+            title: "Calvary Baptist Church",
+            subTitle: "Contact Cletous 0775985609",
+            buttons: ['OK']
+        });
+        alert.present();
+    };
+    /////////////////////// Gweru Churches ////////////////////////////////////////
+    BymfLocatorPage.prototype.first = function () {
+        var alert = this.alertCtrl.create({
+            title: "First Baptist Church, Mkoba",
+            subTitle: "Contact Allan - 0778037875",
+            buttons: ['OK']
+        });
+        alert.present();
+    };
+    BymfLocatorPage.prototype.senga = function () {
+        var alert = this.alertCtrl.create({
+            title: "Senga Baptist Church",
+            subTitle: "Contact Methembe 0771601578",
+            buttons: ['OK']
+        });
+        alert.present();
+    };
+    ///////////////////// Zvishavane ////////////////////////////////
+    BymfLocatorPage.prototype.tsitsi = function () {
+        var alert = this.alertCtrl.create({
+            title: "Tsitsi Baptist Church",
+            subTitle: "Contact Mark 0733117380",
+            buttons: ['OK']
+        });
+        alert.present();
+    };
+    BymfLocatorPage.prototype.maglass = function () {
+        var alert = this.alertCtrl.create({
+            title: "Maglass Baptist Church",
+            subTitle: "Contact Thomas 0773706129",
+            buttons: ['OK']
+        });
+        alert.present();
+    };
     BymfLocatorPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-bymf-locator',template:/*ion-inline-start:"C:\Pastel18\Install\bymf\src\pages\bymf-locator\bymf-locator.html"*/'<ion-header>\n    <ion-navbar style="height:75px;">\n      <button ion-button menuToggle left>\n        <ion-icon name="menu">&nbsp;BYMF Group Locator</ion-icon>\n      </button>\n      <button ion-button menuToggle right>\n        <img src="assets/imgs/logo.jpg" width="75px" height="75px" style="display:inline-block" />\n      </button>\n    </ion-navbar>\n  </ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"C:\Pastel18\Install\bymf\src\pages\bymf-locator\bymf-locator.html"*/,
+            selector: 'page-bymf-locator',template:/*ion-inline-start:"C:\Pastel18\Install\bymf\src\pages\bymf-locator\bymf-locator.html"*/'<ion-header>\n    <ion-navbar style="height:75px;">\n      <button ion-button menuToggle left>\n        <ion-icon name="menu">&nbsp;BYMF Group Locator</ion-icon>\n      </button>\n      <button ion-button menuToggle right>\n        <img src="assets/imgs/logo.jpg" width="75px" height="75px" style="display:inline-block" />\n      </button>\n    </ion-navbar>\n  </ion-header>\n\n\n<ion-content padding>  \n    <ion-item-divider color="primary">\n        <ion-label>\n          Bulawayo\n        </ion-label>\n      </ion-item-divider>\n      \n      <!-- Item Dividers in a List -->\n      <ion-list>  \n        <button ion-item (click)="bethel()">\n          <ion-label>Bethel Baptist Church</ion-label>\n        </button>\n      </ion-list>\n  <ion-item-divider color="primary">\n    <ion-label>\n      Harare\n    </ion-label>\n  </ion-item-divider>\n  \n  <!-- Item Dividers in a List -->\n  <ion-list>  \n    <button ion-item (click)="calvary()"><ion-label>Calvary Baptist Church</ion-label></button>\n  </ion-list>\n\n  <ion-item-divider color="primary">\n      <ion-label>\n        Gweru\n      </ion-label>\n    </ion-item-divider>\n    \n    <!-- Item Dividers in a List -->\n    <ion-list>  \n      <button ion-item (click)="first()"><ion-label>First Baptist Church, Mkoba</ion-label></button>\n      <button ion-item (click)="senga()"><ion-label>Senga Baptist Church</ion-label></button>\n    </ion-list>\n    <ion-item-divider color="primary">\n        <ion-label>\n          Zvishavane\n        </ion-label>\n      </ion-item-divider>\n      \n      <!-- Item Dividers in a List -->\n      <ion-list>  \n        <button ion-item (click)="tsitsi()"><ion-label>Tsitsi Baptist Church</ion-label></button>\n        <button ion-item (click)="maglass()"><ion-label>Maglass Baptist Church</ion-label></button>\n      </ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\Pastel18\Install\bymf\src\pages\bymf-locator\bymf-locator.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]])
     ], BymfLocatorPage);
     return BymfLocatorPage;
 }());
@@ -135,7 +217,7 @@ var BymfLocatorPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 106:
+/***/ 105:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -170,9 +252,9 @@ var BymfManualChapterPage = /** @class */ (function () {
     };
     BymfManualChapterPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-bymf-manual-chapter',template:/*ion-inline-start:"C:\Pastel18\Install\bymf\src\pages\bymf-manual-chapter\bymf-manual-chapter.html"*/'  <ion-header>\n      <ion-navbar>\n        <button menuToggle *ngIf="!selectedItem">\n          <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Chapter {{selectedItem.title}} - {{selectedItem.note}}</ion-title>\n      </ion-navbar>\n    </ion-header>\n\n\n  <ion-content>\n      <!-- <h3 text-center *ngIf="selectedItem">\n        Chapter {{selectedItem.title}} - {{selectedItem.note}}\n      </h3> -->\n      <p>the pictures come here </p>\n  </ion-content>>\n'/*ion-inline-end:"C:\Pastel18\Install\bymf\src\pages\bymf-manual-chapter\bymf-manual-chapter.html"*/,
+            selector: 'page-bymf-manual-chapter',template:/*ion-inline-start:"C:\Pastel18\Install\bymf\src\pages\bymf-manual-chapter\bymf-manual-chapter.html"*/'  <ion-header>\n      <ion-navbar>\n        <button menuToggle *ngIf="!selectedItem">\n          <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title>Chapter {{selectedItem.title}} - {{selectedItem.note}}</ion-title>\n      </ion-navbar>\n    </ion-header>\n\n\n  <ion-content>\n      <!-- <h3 text-center *ngIf="selectedItem">\n        Chapter {{selectedItem.title}} - {{selectedItem.note}}\n      </h3> -->\n      <p *ngIf="selectedItem.title == 1">\n          <img src="assets/manual/1/1.jpg" width="100%" height="auto" style="display:inline-block" />\n          <img src="assets/manual/1/2.jpg" width="100%" height="auto" style="display:inline-block" />\n      </p>\n      <p *ngIf="selectedItem.title == 2">\n          <img src="assets/manual/2/2.jpg" width="100%" height="auto" style="display:inline-block" />\n          <img src="assets/manual/2/1.jpg" width="100%" height="auto" style="display:inline-block" />\n      </p>\n      <p *ngIf="selectedItem.title == 3">\n          <img src="assets/manual/3/2.jpg" width="100%" height="auto" style="display:inline-block" />\n          <img src="assets/manual/3/1.jpg" width="100%" height="auto" style="display:inline-block" />\n      </p>\n      <p *ngIf="selectedItem.title == 4">\n          <img src="assets/manual/4/1.jpg" width="100%" height="auto" style="display:inline-block" />\n          <img src="assets/manual/4/2.jpg" width="100%" height="auto" style="display:inline-block" />\n      </p>\n      <p *ngIf="selectedItem.title == 5">\n          <img src="assets/manual/5/1.jpg" width="100%" height="auto" style="display:inline-block" />\n          <img src="assets/manual/5/2.jpg" width="100%" height="auto" style="display:inline-block" />\n      </p>\n      <p *ngIf="selectedItem.title == 6">\n          <img src="assets/manual/6/1.jpg" width="100%" height="auto" style="display:inline-block" />\n          <img src="assets/manual/6/2.jpg" width="100%" height="auto" style="display:inline-block" />\n      </p>\n      <p *ngIf="selectedItem.title == 7">\n          <img src="assets/manual/7/1.jpg" width="100%" height="auto" style="display:inline-block" />\n          <img src="assets/manual/7/2.jpg" width="100%" height="auto" style="display:inline-block" />\n      </p>\n      <p *ngIf="selectedItem.title == 8">\n          <img src="assets/manual/8/1.jpg" width="100%" height="auto" style="display:inline-block" />\n          <img src="assets/manual/8/2.jpg" width="100%" height="auto" style="display:inline-block" />\n      </p>\n      <p *ngIf="selectedItem.title == 9">\n          <img src="assets/manual/9/1.jpg" width="100%" height="auto" style="display:inline-block" />\n          <img src="assets/manual/9/2.jpg" width="100%" height="auto" style="display:inline-block" />\n      </p>\n      <p *ngIf="selectedItem.title == 10">\n          <img src="assets/manual/10/1.jpg" width="100%" height="auto" style="display:inline-block" />\n          <img src="assets/manual/10/2.jpg" width="100%" height="auto" style="display:inline-block" />\n      </p>\n      <p *ngIf="selectedItem.title == 11">\n          <img src="assets/manual/11/1.jpg" width="100%" height="auto" style="display:inline-block" />\n          <img src="assets/manual/11/2.jpg" width="100%" height="auto" style="display:inline-block" />\n      </p>\n\n\n  </ion-content>>\n'/*ion-inline-end:"C:\Pastel18\Install\bymf\src\pages\bymf-manual-chapter\bymf-manual-chapter.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
     ], BymfManualChapterPage);
     return BymfManualChapterPage;
 }());
@@ -181,14 +263,14 @@ var BymfManualChapterPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 107:
+/***/ 106:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BymfManualPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bymf_manual_chapter_bymf_manual_chapter__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bymf_manual_chapter_bymf_manual_chapter__ = __webpack_require__(105);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -292,7 +374,7 @@ var BymfManualPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-bymf-manual',template:/*ion-inline-start:"C:\Pastel18\Install\bymf\src\pages\bymf-manual\bymf-manual.html"*/'<ion-header>\n    <ion-navbar style="height:75px;">\n      <button ion-button menuToggle left>\n        <ion-icon name="menu">&nbsp;BYMF Manual</ion-icon>\n      </button>\n      <button ion-button menuToggle right>\n        <img src="assets/imgs/logo.jpg" width="75px" height="75px" style="display:inline-block" />\n      </button>\n    </ion-navbar>\n  </ion-header>\n\n\n  <ion-content>\n    <br><br><br>\n      <ion-list>\n        <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">\n          <ion-icon name="" item-left>{{item.title}}</ion-icon>\n           {{item.note}}\n          <div class="item-note" item-right>\n              <ion-icon name="{{item.icon}}" item-left></ion-icon>\n          </div>\n        </button>\n      </ion-list>\n    </ion-content>\n'/*ion-inline-end:"C:\Pastel18\Install\bymf\src\pages\bymf-manual\bymf-manual.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
     ], BymfManualPage);
     return BymfManualPage;
 }());
@@ -301,15 +383,15 @@ var BymfManualPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 108:
+/***/ 107:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WelcomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_global_global__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_global_global__ = __webpack_require__(47);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -390,8 +472,8 @@ var WelcomePage = /** @class */ (function () {
             selector: 'page-welcome',template:/*ion-inline-start:"C:\Pastel18\Install\bymf\src\pages\welcome\welcome.html"*/'<ion-header>\n  <ion-navbar style="height:75px;">\n    <button ion-button menuToggle left>\n      <ion-icon name="menu">&nbsp;Baptist Young Men\'s Fellowship</ion-icon>\n    </button>\n    <button ion-button menuToggle right>\n      <img src="assets/imgs/logo.jpg" width="75px" height="75px" style="display:inline-block" />\n    </button>\n  </ion-navbar>\n</ion-header>\n\n<!-- <ion-content padding> -->\n  <ion-content padding class="card-background-page" >\n    <!-- <ion-card> -->\n      <div class="random-verse" *ngFor="let v of verses">\n        <div class="verse-title">\n          {{v.verse}}\n        </div>\n        <div class="verse-text">\n          {{v.english}}<br><br>\n          {{v.ndebele}}<br><br>\n          {{v.shona}}<br><br>\n        </div>\n      </div>\n      \n  </ion-content>\n<!-- </ion-content> -->\n  \n'/*ion-inline-end:"C:\Pastel18\Install\bymf\src\pages\welcome\welcome.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__providers_global_global__["a" /* GlobalProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */]])
     ], WelcomePage);
     return WelcomePage;
@@ -401,7 +483,7 @@ var WelcomePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 119:
+/***/ 118:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -414,7 +496,7 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 119;
+webpackEmptyAsyncContext.id = 118;
 
 /***/ }),
 
@@ -424,87 +506,27 @@ webpackEmptyAsyncContext.id = 119;
 var map = {
 	"../pages/bymf-contact/bymf-contact.module": [
 		285,
-		20
+		5
 	],
 	"../pages/bymf-events/bymf-events.module": [
 		286,
-		19
+		4
 	],
 	"../pages/bymf-locator/bymf-locator.module": [
 		287,
-		18
+		3
 	],
 	"../pages/bymf-manual-chapter/bymf-manual-chapter.module": [
 		288,
-		17
+		2
 	],
 	"../pages/bymf-manual/bymf-manual.module": [
 		289,
-		16
-	],
-	"../pages/donors-campaigns/donors-campaigns.module": [
-		290,
-		14
-	],
-	"../pages/donors-donations/donors-donations.module": [
-		291,
-		5
-	],
-	"../pages/donors-login/donors-login.module": [
-		292,
 		1
 	],
-	"../pages/donors-message/donors-message.module": [
-		293,
-		13
-	],
-	"../pages/donors-messages/donors-messages.module": [
-		294,
-		12
-	],
-	"../pages/donors-patient/donors-patient.module": [
-		305,
-		11
-	],
-	"../pages/donors-patients/donors-patients.module": [
-		295,
-		4
-	],
-	"../pages/donors-profile/donors-profile.module": [
-		296,
-		10
-	],
-	"../pages/donors-register/donors-register.module": [
-		297,
-		0
-	],
-	"../pages/patients-donations/patients-donations.module": [
-		298,
-		3
-	],
-	"../pages/patients-fees-feedback/patients-fees-feedback.module": [
-		299,
-		9
-	],
-	"../pages/patients-login/patients-login.module": [
-		300,
-		2
-	],
-	"../pages/patients-message/patients-message.module": [
-		301,
-		8
-	],
-	"../pages/patients-messages/patients-messages.module": [
-		302,
-		7
-	],
-	"../pages/patients-profile/patients-profile.module": [
-		303,
-		6
-	],
 	"../pages/welcome/welcome.module": [
-		304,
-		15
+		290,
+		0
 	]
 };
 function webpackAsyncContext(req) {
@@ -542,22 +564,22 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_status_bar__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_status_bar__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(123);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ionic_angular__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_global_global__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_global_global__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_my_my__ = __webpack_require__(277);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_component__ = __webpack_require__(284);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_welcome_welcome__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_bymf_manual_bymf_manual__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_bymf_manual_chapter_bymf_manual_chapter__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_bymf_locator_bymf_locator__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_bymf_events_bymf_events__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_bymf_contact_bymf_contact__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_welcome_welcome__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_bymf_manual_bymf_manual__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_bymf_manual_chapter_bymf_manual_chapter__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_bymf_locator_bymf_locator__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_bymf_events_bymf_events__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_bymf_contact_bymf_contact__ = __webpack_require__(102);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -606,22 +628,7 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/bymf-locator/bymf-locator.module#BymfLocatorPageModule', name: 'BymfLocatorPage', segment: 'bymf-locator', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/bymf-manual-chapter/bymf-manual-chapter.module#BymfManualChapterPageModule', name: 'BymfManualChapterPage', segment: 'bymf-manual-chapter', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/bymf-manual/bymf-manual.module#BymfManualPageModule', name: 'BymfManualPage', segment: 'bymf-manual', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/donors-campaigns/donors-campaigns.module#DonorsCampaignsPageModule', name: 'DonorsCampaignsPage', segment: 'donors-campaigns', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/donors-donations/donors-donations.module#DonorsDonationsPageModule', name: 'DonorsDonationsPage', segment: 'donors-donations', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/donors-login/donors-login.module#DonorsLoginPageModule', name: 'DonorsLoginPage', segment: 'donors-login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/donors-message/donors-message.module#DonorsMessagePageModule', name: 'DonorsMessagePage', segment: 'donors-message', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/donors-messages/donors-messages.module#DonorsMessagesPageModule', name: 'DonorsMessagesPage', segment: 'donors-messages', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/donors-patients/donors-patients.module#DonorsPatientsPageModule', name: 'DonorsPatientsPage', segment: 'donors-patients', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/donors-profile/donors-profile.module#DonorsProfilePageModule', name: 'DonorsProfilePage', segment: 'donors-profile', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/donors-register/donors-register.module#DonorsRegisterPageModule', name: 'DonorsRegisterPage', segment: 'donors-register', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/patients-donations/patients-donations.module#PatientsDonationsPageModule', name: 'PatientsDonationsPage', segment: 'patients-donations', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/patients-fees-feedback/patients-fees-feedback.module#PatientsFeesFeedbackPageModule', name: 'PatientsFeesFeedbackPage', segment: 'patients-fees-feedback', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/patients-login/patients-login.module#PatientsLoginPageModule', name: 'PatientsLoginPage', segment: 'patients-login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/patients-message/patients-message.module#PatientsMessagePageModule', name: 'PatientsMessagePage', segment: 'patients-message', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/patients-messages/patients-messages.module#PatientsMessagesPageModule', name: 'PatientsMessagesPage', segment: 'patients-messages', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/patients-profile/patients-profile.module#PatientsProfilePageModule', name: 'PatientsProfilePage', segment: 'patients-profile', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/welcome/welcome.module#WelcomePageModule', name: 'WelcomePage', segment: 'welcome', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/donors-patient/donors-patient.module#DonorsPatientPageModule', name: 'DonorsPatientPage', segment: 'donors-patient', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/welcome/welcome.module#WelcomePageModule', name: 'WelcomePage', segment: 'welcome', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["a" /* IonicStorageModule */].forRoot(),
@@ -699,16 +706,16 @@ var MyProvider = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_status_bar__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_splash_screen__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_status_bar__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_splash_screen__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(123);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_global_global__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_welcome_welcome__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_bymf_manual_bymf_manual__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_bymf_locator_bymf_locator__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_bymf_events_bymf_events__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_bymf_contact_bymf_contact__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_global_global__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_welcome_welcome__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_bymf_manual_bymf_manual__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_bymf_locator_bymf_locator__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_bymf_events_bymf_events__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_bymf_contact_bymf_contact__ = __webpack_require__(102);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -796,23 +803,23 @@ var MyApp = /** @class */ (function () {
         this.global.serverAddress = "http://bymf.org.zw/api/";
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["h" /* Nav */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["h" /* Nav */])
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["g" /* Nav */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["g" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["h" /* Nav */]),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["g" /* Nav */]),
         __metadata("design:type", Object)
     ], MyApp.prototype, "navCtrl", void 0);
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Pastel18\Install\bymf\src\app\app.html"*/'<ion-menu [content]="content">\n\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>BYMF</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>\n'/*ion-inline-end:"C:\Pastel18\Install\bymf\src\app\app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5__providers_global_global__["a" /* GlobalProvider */],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["k" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["g" /* MenuController */],
+            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["f" /* MenuController */],
             __WEBPACK_IMPORTED_MODULE_1__ionic_native_status_bar__["a" /* StatusBar */],
             __WEBPACK_IMPORTED_MODULE_2__ionic_native_splash_screen__["a" /* SplashScreen */],
             __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["l" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["k" /* ToastController */],
             __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
     ], MyApp);
     return MyApp;
@@ -822,7 +829,7 @@ var MyApp = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 50:
+/***/ 47:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

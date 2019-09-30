@@ -10,6 +10,24 @@
   </ion-header>
 
 
-<ion-content padding>
+  <ion-content>
+    <br><br><br>
 
-</ion-content>
+    <div *ngIf="this.events.length == 0; else elseBlock">There are no upcoming events. You may need to connect to the internet to view recently added events. </div>
+    <ng-template #elseBlock>
+        <ion-list>
+            <button ion-item *ngFor="let i of events">
+              <!-- <ion-icon name="" item-left>{{i.nothing}}</ion-icon> -->
+                <h2>{{i.event}}</h2>
+                <br>
+                <ion-icon name="calendar">
+                  &nbsp;{{i.dates}}
+                </ion-icon>
+                <br>
+                <ion-icon name="home">&nbsp;{{i.venue}}</ion-icon>
+                <div class="item-note" item-right> 
+                </div>
+            </button>
+          </ion-list>
+    </ng-template>
+  </ion-content>
